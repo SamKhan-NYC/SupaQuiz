@@ -64,14 +64,24 @@ Deno.serve(async (req) => {
 
     // Todo: Broadcast result via Supabase Realtime
 
+    const headers = new Headers();
+    headers.set("Cross-Origin-Resource-Policy", "cross-origin");
+    headers.set("Access-Control-Allow-Origin", "*");
+    headers.set("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
+    headers.set("Access-Control-Allow-Headers", "*");
     return new Response(
       JSON.stringify({
         is_correct: isCorrect,
         explanation,
         correct_option: question.correct_option
-      }), { status: 200 }
+      }), { status: 200, headers }
     );
   } catch (err: any) {
-    return new Response(JSON.stringify({ error: err.message || err }), { status: 500 });
+    const headers = new Headers();
+    headers.set("Cross-Origin-Resource-Policy", "cross-origin");
+    headers.set("Access-Control-Allow-Origin", "*");
+    headers.set("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
+    headers.set("Access-Control-Allow-Headers", "*");
+    return new Response(JSON.stringify({ error: err.message || err }), { status: 500, headers });
   }
 });

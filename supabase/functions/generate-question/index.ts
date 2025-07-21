@@ -37,9 +37,20 @@ Deno.serve(async (req) => {
     if (error) throw error;
 
     // Todo: Broadcast new question via Supabase Realtime
-
-    return new Response(JSON.stringify({ question: data }), { status: 200 });
+    // Add CORS headers
+    const headers = new Headers();
+    headers.set("Cross-Origin-Resource-Policy", "cross-origin");
+    headers.set("Access-Control-Allow-Origin", "*");
+    headers.set("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
+    headers.set("Access-Control-Allow-Headers", "*");
+    return new Response(JSON.stringify({ question: data }), { status: 200, headers });
   } catch (err: any) {
-    return new Response(JSON.stringify({ error: err.message || err }), { status: 500 });
+    // Add CORS headers
+    const headers = new Headers();
+    headers.set("Cross-Origin-Resource-Policy", "cross-origin");
+    headers.set("Access-Control-Allow-Origin", "*");
+    headers.set("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
+    headers.set("Access-Control-Allow-Headers", "*");
+    return new Response(JSON.stringify({ error: err.message || err }), { status: 500, headers });
   }
 });
