@@ -72,7 +72,6 @@ Deno.serve(async (req)=>{
         }
       ]);
     }
-    // Todo: Broadcast result via Supabase Realtime
     const headers = new Headers();
     headers.set("Access-Control-Allow-Origin", "*");
     headers.set("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
