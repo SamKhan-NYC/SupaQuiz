@@ -4,6 +4,7 @@
 
 ## 0. prefix
   - **What remains to be done**
+  - Update CORS headers and remove '*' entries
   - Rate Limiting SupaBase DB calls
   - Rate limiting Supabase Functions calls
   - Add loading state component(spinner)
