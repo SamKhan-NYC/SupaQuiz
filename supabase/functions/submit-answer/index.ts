@@ -43,7 +43,9 @@ Deno.serve(async (req)=>{
     const { data: question } = await supabase.from("questions").select("*").eq("id", question_id).single();
     if (!question) throw new Error("Question not found");
     const isCorrect = selected_option === question.correct_option ? 1 : 0;
-    const explanation = await fetchExplanation(llm, question.question_text, question.options[selected_option], question.options[question.correct_option]);
+    const correctOptionText = (question.options).split(',')[question.correct_option];
+    const selectedOptionText = (question.options).split(',')[selected_option];
+    const explanation = await fetchExplanation(llm, question.question_text, selectedOptionText, correctOptionText);
     // Store answer and update stats
     await supabase.from("answers").insert([
       {
