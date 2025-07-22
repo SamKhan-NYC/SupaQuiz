@@ -2,6 +2,14 @@
 
 ---
 
+## 0. prefix
+  - **What remains to be done**
+  - Rate Limiting SupaBase DB calls
+  - Rate limiting Supabase Functions calls
+  - Add loading state component(spinner)
+  - Use Interfaces instead of any
+  - More error handling and messages
+
 ## 1. Architecture
 
 - **Frontend:**  
