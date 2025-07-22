@@ -6,7 +6,7 @@
 
 - **Frontend:**  
   - Built with React (TypeScript), for modularity and maintainability. Class-less using hooks.
-  - Uses Supabase JS client for API.
+  - Uses Supabase JS client for API instead of fetch. This provides better integration to backend project.
   - UI is retro-inspired for engaging user experience.
   - TypeScript is used for static typing, improving reliability and maintainability. 
 
@@ -87,5 +87,33 @@
 - Supabase project and Edge Functions are set up correctly before starting.
 - All environment variables provided (API keys, URLs).
 - Developers have access to required services (Supabase, Vercel, OpenAI/Gemini).
+
+---
+
+## 9. Data Management
+
+- **Database Schema:**
+  - Questions table: stores generated questions, correct answers, and metadata
+  - Game sessions: temporary session data with username and current score
+  - Scores table: high scores and statistics
+  - No user profiles to keep it lightweight
+
+- **Data Flow:**
+  - Frontend → Supabase Client → Edge Functions → AI APIs
+  - Real-time updates using Supabase subscriptions for live game state
+  - Session data cleaned up after game completion
+
+---
+
+## 10. Development Workflow
+
+- **Environment Setup:**
+  - Local development uses Supabase local development
+  - Environment-specific configuration files
+  - Hot reload for both frontend and Edge Functions
+
+- **Version Control:**
+  - Conventional github
+  - Automated deployment on main branch can be implemented with webhooks
 
 ---

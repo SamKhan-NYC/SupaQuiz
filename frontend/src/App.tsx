@@ -10,6 +10,7 @@ const supabase = createClient(
   process.env.REACT_APP_SUPABASE_ANON_KEY as string
 );
 
+// any should be replaced with specific types as needed, I ran out of time to fix them all
 const App: React.FC = () => {
   const [username, setUsername] = useState<string>('');
   const [gameStarted, setGameStarted] = useState<boolean>(false);
