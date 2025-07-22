@@ -4,7 +4,7 @@ const supabaseKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
 const OPENAI_API_KEY = Deno.env.get("OPENAI_API_KEY");
 const GEMINI_API_KEY = Deno.env.get("GEMINI_API_KEY");
 function buildLLMPrompt() {
-  return `Generate a trivia question with 4 or 5 options. Only one answer should be correct. Respond in format: {"question": "...","options": ["...", "...", "...", "..."],"correct_option": 1}`;
+  return `Generate a trivia question with 4 or 5 options. Only one answer should be correct. Use these topics: General Knowledge, Geography, History, Science, Literature, Movies, Music, Sports, Pop Culture, and Current Events. Respond in format: {"question": "...","options": ["...", "...", "...", "..."],"correct_option": 1}`;
 }
 const supabase = createClient(Deno.env.get("SUPABASE_URL"), Deno.env.get("SUPABASE_SERVICE_ROLE_KEY"));
 async function fetchQuestion() {
@@ -61,7 +61,6 @@ Deno.serve(async (req)=>{
       console.error("Supabase insert error:", error.message);
       throw new Error(`Failed to insert question: ${JSON.stringify(error)} ${questionObj.question}`);
     }
-    // Todo: Broadcast new question via Supabase Realtime
     // Add CORS headers
     const headers = new Headers();
     headers.set("Access-Control-Allow-Origin", "*");
