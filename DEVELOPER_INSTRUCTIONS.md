@@ -17,8 +17,8 @@
 ### 2. Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_ORG/ai-trivia-arena.git
-cd ai-trivia-arena
+https://github.com/SamKhan-NYC/SupaQuiz
+cd SupaQuiz
 ```
 
 ---
